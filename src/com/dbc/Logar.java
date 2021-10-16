@@ -1,6 +1,8 @@
 package com.dbc;
 import java.util.Scanner;
 
+
+
 public class Logar  {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -17,5 +19,6 @@ public class Logar  {
             System.out.println("Login ou senha inválidos!");
         }
     }
+
 
 }

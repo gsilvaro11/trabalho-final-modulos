@@ -3,8 +3,9 @@ package com.dbc;
 public abstract class Cadastro {
     private String nome;
     private String cpf;
-    Contato contato;
-    Endereco endereco;
+    private Contato contato;
+    private Endereco endereco;
+
 
     public String getNome() {
         return nome;

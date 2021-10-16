@@ -1,18 +1,16 @@
 package com.dbc;
 
 public class Endereco {
-    public class Endereco {
-        private String Cidade;
-        private String Estado;
-        private String Cep;
-        private int NumeroCasa;
+    private String Cidade;
+    private String Estado;
+    private String Cep;
+    private int NumeroCasa;
 
-        public Endereco(String cidade, String estado, String cep, int numeroCasa) {
-            Cidade = cidade;
-            Estado = estado;
-            Cep = cep;
-            NumeroCasa = numeroCasa;
-        }
+    public Endereco(String cidade, String estado, String cep, int numeroCasa) {
+        Cidade = cidade;
+        Estado = estado;
+        Cep = cep;
+        NumeroCasa = numeroCasa;
     }
 
 }

@@ -40,8 +40,4 @@ public class Quartos extends Hoteis{
         this.valor = valor;
     }
 
-    @Override
-    public void imprimir() {
-
     }
-}
