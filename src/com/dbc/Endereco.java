@@ -1,6 +1,6 @@
 package com.dbc;
 
-public class Endereço {
+public class Endereco {
     public class Endereco {
         private String Cidade;
         private String Estado;
