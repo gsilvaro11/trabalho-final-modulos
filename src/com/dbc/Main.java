@@ -11,7 +11,6 @@ public class Main {
         contatoUm.setEmail("emailcontatoum@gmail.com");
         contatoUm.setTelefone("51698326995");
 
-
     }
 
 }
