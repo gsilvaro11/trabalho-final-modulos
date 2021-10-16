@@ -1,4 +1,9 @@
 package com.dbc;
 
-public class Hoteis {
+public abstract class Hoteis {
+    private String estado;
+    private String cidade;
+    private String nome;
+    private int quartosDisp;
+    private String diferencial;
 }
