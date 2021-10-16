@@ -1,14 +1,18 @@
 package com.dbc;
 
 public enum Cidade {
-    PORTO_ALEGRE(1),
-    SAO_PAULO(2),
+    SAO_PAULO(1),
     RECIFE(2);
 
-    private Integer numeroIndex;
+    private Integer nome;
 
-    Cidade(Integer numeroIndex){
-        this.numeroIndex = numeroIndex;
+    Cidade(Integer nome){
+        this.nome = nome;
     }
+
+    public Integer getNome() {
+        return nome;
+    }
+
 
 }

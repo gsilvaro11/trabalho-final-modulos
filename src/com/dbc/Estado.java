@@ -1,13 +1,19 @@
 package com.dbc;
 
 public enum Estado {
-    RIO_GRANDE_DO_SUL(1),
-    SAO_PAULO(2),
-    PERNAMBUCO(3);
-    private Integer numeroIndex;
+    SAO_PAULO(1),
+    PERNAMBUCO(2);
 
-    Estado(Integer numeroIndex){
-        this.numeroIndex = numeroIndex;
+    private Integer index;
+
+    Estado(Integer index){
+        this.index = index;
     }
+
+    public Integer getIndex() {
+        return index;
+    }
+
+
 
 }

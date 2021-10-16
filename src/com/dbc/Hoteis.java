@@ -1,54 +1,51 @@
 package com.dbc;
 
-public abstract class Hoteis implements Imprimir {
-    private String estado;
-    private String cidade;
-    private String nome;
-    private int quartosDisp;
+import java.util.Map;
+
+public class Hoteis {
+    private Estado estado;
+    private Cidade cidade;
+    private String hoteis;
+    private Integer quartosDisp;
     private String diferencial;
 
-    public String getEstado() {
+    Hoteis(){};
+    public Hoteis(Estado estado, Cidade cidade, String hoteis, Integer quartosDisp, String diferencial) {
+        this.estado = estado;
+        this.cidade = cidade;
+        this.hoteis = hoteis;
+        this.quartosDisp = quartosDisp;
+        this.diferencial = diferencial;
+    }
+
+    public Estado getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getCidade() {
+    public Cidade getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public String getHoteis() {
+        return hoteis;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getQuartosDisp() {
+    public Integer getQuartosDisp() {
         return quartosDisp;
-    }
-
-    public void setQuartosDisp(int quartosDisp) {
-        this.quartosDisp = quartosDisp;
     }
 
     public String getDiferencial() {
         return diferencial;
     }
 
-    public void setDiferencial(String diferencial) {
-        this.diferencial = diferencial;
-    }
-
     @Override
-    public void imprimir() {
-        System.out.println(nome);
+    public String toString() {
+        return "Hoteis{" +
+                "estado='" + estado + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", hoteis='" + hoteis + '\'' +
+                ", quartosDisp=" + quartosDisp +
+                ", diferencial='" + diferencial + '\'' +
+                '}';
     }
 }
