@@ -46,4 +46,9 @@ public abstract class Hoteis implements Imprimir {
     public void setDiferencial(String diferencial) {
         this.diferencial = diferencial;
     }
+
+    @Override
+    public void imprimir() {
+        System.out.println(nome);
+    }
 }

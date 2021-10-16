@@ -8,7 +8,7 @@ public class Reserva implements Imprimir{
 
     @Override
     public void imprimir() {
-        System.out.println(hoteis.getNome()+quartos.getNome()+quartos.getValor()+data);
+        System.out.println(usuario.getNome()+hoteis.getNome()+quartos.getNome()+quartos.getValor()+data);
 
     }
 }
