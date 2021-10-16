@@ -1,27 +1,52 @@
 package com.dbc;
 
-import javax.swing.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
+
     public static void main(String[] args) {
-        ArrayList<Hoteis> listaHosteis = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        listaHosteis.add(new Hoteis(Estado.PERNAMBUCO, Cidade.RECIFE, "Teste", 3, "teste"));
-        listaHosteis.add(new Hoteis(Estado.SAO_PAULO, Cidade.SAO_PAULO, "Teste", 3, "teste"));
+        ArrayList<String> listaEstados = new ArrayList<>();
+        String[][] listaCidades = {
+                {"PORTO ALEGRE", "VIAMÃO", "CANOAS"},
+                {"RIO DE JANEIRO", "TESTE"}
+        };
+        String[][][] listaHoteis = {
+                {{"HotelPorto", "Hotel1"}, {"HotelViamao", "Hotel1"}, {"HotelPorto", "Hotel1"}},
+                {{"HotelPorto", "Hotel1"}, {"HotelViamao", "Hotel1"}}
+        };
+        Hoteis hoteis = new Hoteis();
+        listaEstados.add("RS");
+        listaEstados.add("RJ");
+        hoteis.setEstados(listaEstados);
+        hoteis.setCidades(listaCidades);
+        hoteis.setHoteis(listaHoteis);
 
-        System.out.println("Digite o estado: ");
-        Integer index = 2;
+        //********* PROGRAMA ***********
 
-        List<Hoteis> filtroEstado = listaHosteis.stream()
-                .filter(hoteis -> {
-                    return hoteis.getEstado().getIndex().equals(index);
-                })
-                .collect(Collectors.toList());
-        System.out.println(filtroEstado);
+        while (true) {
+
+            hoteis.imprimeEstado();
+            System.out.println("Escolha um indice");
+            Integer resposta = scanner.nextInt();
+
+            if (resposta < hoteis.getEstados().size()) {
+                hoteis.imprimeCidade(resposta);
+
+                while (true) {
+                    System.out.println("Escolha o indice da cidade: ");
+                    Integer escolhaCidade = scanner.nextInt();
+                    if (escolhaCidade < hoteis.getCidades()[resposta].length) {
+                        hoteis.imprimeHoteis(resposta, escolhaCidade);
+                    } else {
+                        System.err.println("Indice incorreto");
+                    }
+                }
+            } else {
+                System.err.println("Indice incorreto");
+            }
 
 
+        }
     }
-
 }
