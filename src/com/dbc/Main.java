@@ -20,9 +20,12 @@ public class Main {
                     opcaoUm();
                     break;
                 }
-
                 case 2 -> {
                     opcaoDois();
+                    break;
+                }
+                case 3 -> {
+                    opcaoTres();
                     break;
                 }
                 default -> {
@@ -170,6 +173,34 @@ public class Main {
             }
         }catch (IndexOutOfBoundsException e){
 
+        }
+
+
+    }
+    static void opcaoTres(){
+        Scanner scanner = new Scanner(System.in);
+
+        if(listaReserva.size() > 0){
+            for (int i = 0; i < listaReserva.size(); i++){
+                System.out.println(i + " " + listaReserva.get(i).getListaHotel().get(0));
+            }
+            while (true){
+                System.out.println("Escolha o index desejado para remoção:");
+                Integer indexRemocao = scanner.nextInt();
+                if(indexRemocao < listaReserva.size()){
+                    listaReserva.get(indexRemocao).getListaHotel().remove(0);
+                    listaReserva.get(indexRemocao).getListaCidade().remove(0);
+                    listaReserva.get(indexRemocao).getListaEstado().remove(0);
+                    listaReserva.get(indexRemocao).getListaQuarto().remove(0);
+                    listaReserva.get(indexRemocao).getListaValor().remove(0);
+
+                    break;
+                }else {
+                    System.err.println("Index incorreto!");
+                }
+            }
+        }else {
+            System.err.println("Nenhuma reserva cadastrada...");
         }
 
 
