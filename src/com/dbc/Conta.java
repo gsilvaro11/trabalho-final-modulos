@@ -8,6 +8,14 @@ public abstract class Conta {
     private Contato contato;
     private Endereco endereco;
 
+
+    public boolean logar(String login, String senha){
+        if(this.getLogin().equals(login) && this.getSenha().equals(senha)){
+            return true;
+        }
+        return false;
+    }
+
     public String getNome() {
         return nome;
     }
