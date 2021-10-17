@@ -119,46 +119,45 @@ public class Main {
                     Integer escolhaCidade = scanner.nextInt();
                     if (escolhaCidade < hoteis.getCidades()[resposta].length) {
                         hoteis.imprime(resposta, escolhaCidade);
-                        System.out.println("Digite o index do hotel desejado: ");
-                        Integer indexHotel = scanner.nextInt();
 
                         while (aux) {
+                            System.out.println("Digite o index do hotel desejado: ");
+                            Integer indexHotel = scanner.nextInt();
                             if (indexHotel < hoteis.getHoteis()[resposta].length) {
                                 hoteis.imprimeQuartos(resposta, escolhaCidade, indexHotel);
-                                System.out.println("Digite index do quarto desejado");
-                                Integer escolhaQuarto = scanner.nextInt();
+                                while (aux){
+                                    System.out.println("Digite index do quarto desejado");
+                                    Integer escolhaQuarto = scanner.nextInt();
 
-                                if (escolhaQuarto < hoteis.getNumeroQuarto()[resposta][indexHotel].length) {
-                                    ArrayList<String> listaEstado = new ArrayList<>();
-                                    ArrayList<String> listaCidade = new ArrayList<>();
-                                    ArrayList<String> listaHotel = new ArrayList<>();
-                                    ArrayList<Integer> listaQuarto = new ArrayList<>();
-                                    ArrayList<Double> listaValor = new ArrayList<>();
+                                    if (escolhaQuarto < hoteis.getNumeroQuarto()[resposta][indexHotel].length) {
+                                        ArrayList<String> listaEstado = new ArrayList<>();
+                                        ArrayList<String> listaCidade = new ArrayList<>();
+                                        ArrayList<String> listaHotel = new ArrayList<>();
+                                        ArrayList<Integer> listaQuarto = new ArrayList<>();
+                                        ArrayList<Double> listaValor = new ArrayList<>();
 //
-                                    listaEstado.add(hoteis.getEstados().get(resposta).getName());
-                                    listaCidade.add(hoteis.getCidades()[resposta][escolhaCidade].getName());
-                                    listaHotel.add(hoteis.getHoteis()[resposta][escolhaCidade][indexHotel]);
-                                    listaQuarto.add(hoteis.getNumeroQuarto()[resposta][escolhaCidade][escolhaQuarto]);
-                                    listaValor.add(hoteis.getValorQuarto()[resposta][escolhaCidade][escolhaQuarto]);
+                                        listaEstado.add(hoteis.getEstados().get(resposta).getName());
+                                        listaCidade.add(hoteis.getCidades()[resposta][escolhaCidade].getName());
+                                        listaHotel.add(hoteis.getHoteis()[resposta][escolhaCidade][indexHotel]);
+                                        listaQuarto.add(hoteis.getNumeroQuarto()[resposta][escolhaCidade][escolhaQuarto]);
+                                        listaValor.add(hoteis.getValorQuarto()[resposta][escolhaCidade][escolhaQuarto]);
 
-                                    reserva.setListaCidade(listaCidade);
-                                    reserva.setListaEstado(listaEstado);
-                                    reserva.setListaHotel(listaHotel);
-                                    reserva.setListaQuarto(listaQuarto);
-                                    reserva.setListaValor(listaValor);
+                                        reserva.setListaCidade(listaCidade);
+                                        reserva.setListaEstado(listaEstado);
+                                        reserva.setListaHotel(listaHotel);
+                                        reserva.setListaQuarto(listaQuarto);
+                                        reserva.setListaValor(listaValor);
 
+                                        System.out.println("Reserva concluída\n");
 
-                                    System.out.println("Reserva concluída\n");
-
-                                    aux = false;
-                                    return listaReserva.add(reserva);
+                                        aux = false;
+                                        return listaReserva.add(reserva);
+                                    }else {
+                                        System.err.println("Indice incorreto!!");
+                                    }
                                 }
-
-                            } else {
-                                System.err.println("Indice incorreto!!");
                             }
                         }
-
                     } else {
                         System.err.println("Indice incorreto!!");
                     }
