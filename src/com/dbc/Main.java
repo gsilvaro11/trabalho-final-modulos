@@ -21,6 +21,10 @@ public class Main {
                     break;
                 }
 
+                case 2 -> {
+                    opcaoDois();
+                    break;
+                }
                 default -> {
                     System.err.println("Index errado!");
                 }
@@ -146,7 +150,31 @@ public class Main {
 
         }
         return listaReserva.add(reserva);
-    }    
+    }
+    static void opcaoDois(){
+
+        try {
+            if(listaReserva.size() > 0){
+                System.out.println("\n===================================");
+                System.out.println("Reservas realizadas");
+                for(int i = 0; i < listaReserva.size(); i++){
+                    System.out.println("Estado: " + listaReserva.get(i).getListaEstado().get(0));
+                    System.out.println("Cidade: " + listaReserva.get(i).getListaCidade().get(0));
+                    System.out.println("Hotel: " + listaReserva.get(i).getListaHotel().get(0));
+                    System.out.println("Quarto: " + listaReserva.get(i).getListaQuarto().get(0));
+                    System.out.println("Valor: " + listaReserva.get(i).getListaValor().get(0));
+                }
+                System.out.println("===================================\n");
+            }else {
+                System.err.println("Não existem reservas ainda.");
+            }
+        }catch (IndexOutOfBoundsException e){
+
+        }
+
+
+    }
+
     static void menu(){
         System.out.println("=============================");
         System.out.println("[0] - Sair\n[1] - Cadastrar Reserva\n[2] - Listar Reservas\n[3] - Excluir");
