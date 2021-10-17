@@ -211,4 +211,27 @@ public class Main {
         System.out.println("[0] - Sair\n[1] - Cadastrar Reserva\n[2] - Listar Reservas\n[3] - Excluir");
         System.out.println("=============================");
     }
+    public static void criarCliente(){
+        Endereco enderecoUm = new Endereco();
+        enderecoUm.setEstado("SP");
+        enderecoUm.setCidade("Guaratinguetá");
+        enderecoUm.setNumero(484);
+        enderecoUm.setCep("12504-010");
+
+        Contato contatoUm = new Contato();
+        contatoUm.setTelefone("12981117598");
+        contatoUm.setEmail("Matheus.camilo16@hotmail.com");
+
+        Usuario usuarioUm = new Usuario();
+        usuarioUm.setNome("Matheus Camilo");
+        usuarioUm.setCpf("41286811805");
+        usuarioUm.setContato(contatoUm);
+        usuarioUm.setEndereco(enderecoUm);
+        usuarioUm.setLogin("mathcamilo");
+        usuarioUm.setSenha("123");
+
+
+
+    }
 }
+
