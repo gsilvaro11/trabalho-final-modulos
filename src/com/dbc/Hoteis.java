@@ -1,50 +1,29 @@
 package com.dbc;
 
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.Arrays;
 
-public class Hoteis {
-    private ArrayList<String> estados;
-    private String[][] cidades;
+public class Hoteis implements Impressao{
+    private ArrayList<Estado> estados;
+    private Cidade[][] cidades;
     private String[][][] hoteis;
+    private Integer[][][] numeroQuarto;
+    private String[][][] descricao;
+    private Double[][][] valorQuarto;
 
-
-
-
-    public void imprimeEstado(){
-        System.out.println("Estado          Indice");
-        for(int i = 0; i < getEstados().size(); i++){
-            System.out.println(getEstados().get(i) + " " + "                " + i);
-        }
-    }
-
-    public void imprimeCidade(Integer index){
-        System.out.println("Cidades do " + getEstados().get(index));
-        for (int i = 0; i < getCidades()[index].length; i++) {
-            System.out.println(getCidades()[index][i]);
-        }
-    }
-
-    public void imprimeHoteis(Integer indexEstado, Integer indexCidade){
-        System.out.println("Hoteis da cidade:  " + getCidades()[indexEstado][indexCidade]);
-        for (int i = 0; i < getHoteis()[indexEstado][indexCidade].length; i++){
-            System.out.println(getHoteis()[indexEstado][indexCidade][i]);
-        }
-    }
-
-    public ArrayList<String> getEstados() {
+    public ArrayList<Estado> getEstados() {
         return estados;
     }
 
-    public void setEstados(ArrayList<String> estados) {
+    public void setEstados(ArrayList<Estado> estados) {
         this.estados = estados;
     }
 
-    public String[][] getCidades() {
+    public Cidade[][] getCidades() {
         return cidades;
     }
 
-    public void setCidades(String[][] cidades) {
+    public void setCidades(Cidade[][] cidades) {
         this.cidades = cidades;
     }
 
@@ -55,4 +34,72 @@ public class Hoteis {
     public void setHoteis(String[][][] hoteis) {
         this.hoteis = hoteis;
     }
+
+    public Integer[][][] getNumeroQuarto() {
+        return numeroQuarto;
+    }
+
+    public void setNumeroQuarto(Integer[][][] numeroQuarto) {
+        this.numeroQuarto = numeroQuarto;
+    }
+
+    public String[][][] getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String[][][] descricao) {
+        this.descricao = descricao;
+    }
+
+    public Double[][][] getValorQuarto() {
+        return valorQuarto;
+    }
+
+    public void setValorQuarto(Double[][][] valorQuarto) {
+        this.valorQuarto = valorQuarto;
+    }
+
+    @Override
+    public void imprime() {
+        System.out.println("\n=============================");
+        System.out.println("Indice      Estado");
+        for(int i = 0; i < getEstados().size(); i++){
+            System.out.println(i + "           " + getEstados().get(i).getName());
+        }
+        System.out.println("=============================\n");
+    }
+
+    public void imprime(Integer index) {
+        System.out.println("\n=============================");
+        System.out.println("Cidades do " + getEstados().get(index).getName() + ":");
+        System.out.println("Index   Estado");
+        for (int i = 0; i < getCidades()[index].length; i++) {
+            System.out.println(i + "       " +getCidades()[index][i].getName());
+        }
+        System.out.println("=============================\n");
+    }
+
+    public void imprime(Integer indexEstado, Integer indexCidade) {
+        System.out.println("\n=============================");
+        System.out.println("Hoteis da cidade " + getCidades()[indexEstado][indexCidade] + ":");
+        System.out.println("Index     Hoteis");
+        for (int i = 0; i < getHoteis()[indexEstado][indexCidade].length; i++){
+            System.out.println(i + "         " + getHoteis()[indexEstado][indexCidade][i]);
+        }
+        System.out.println("=============================\n");
+    }
+
+    public void imprimeQuartos(Integer indexEstado, Integer indexCidade, Integer indexHotel) {
+        System.out.println("\n=============================");
+        System.out.println("Hotel " + getHoteis()[indexEstado][indexCidade][indexHotel] +  ":");
+        for (int i = 0; i < getNumeroQuarto()[indexCidade][indexHotel].length; i++){
+            System.out.printf("%s quarto:\n", i);
+            System.out.println("Numero quarto: " + getNumeroQuarto()[indexCidade][indexHotel][i]);
+            System.out.println("Descrição: " + getDescricao()[indexCidade][indexHotel][i]);
+            System.out.println("Valor: " + getValorQuarto()[indexCidade][indexHotel][i]  + "\n");
+
+        }
+        System.out.println("=============================\n");
+    }
+
 }
