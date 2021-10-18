@@ -270,8 +270,11 @@ public class Main {
             System.out.println("=============================");
             System.out.println("Index     Hoteis");
             for (int i = 0; i < listaReserva.size(); i++){
-                System.out.println(i + "         " + listaReserva.get(i).getListaHotel().get(0));
+                try {
+                    System.out.println(i + "         " + listaReserva.get(i).getListaHotel().get(0));
+                }catch (IndexOutOfBoundsException ignored){}
             }
+
             System.out.println("=============================");
             while (true){
                 System.out.println("Qual indice deseja atualizar? ");
