@@ -62,6 +62,8 @@ public class Hoteis implements Impressao{
     @Override
     public void imprime() {
         System.out.println("\n=============================");
+        System.out.println("           Estados");
+        System.out.println("=============================");
         System.out.println("Indice      Estado");
         for(int i = 0; i < getEstados().size(); i++){
             System.out.println(i + "           " + getEstados().get(i).getName());
@@ -72,6 +74,7 @@ public class Hoteis implements Impressao{
     public void imprime(Integer index) {
         System.out.println("\n=============================");
         System.out.println("Cidades do " + getEstados().get(index).getName() + ":");
+        System.out.println("=============================");
         System.out.println("Index   Estado");
         for (int i = 0; i < getCidades()[index].length; i++) {
             System.out.println(i + "       " +getCidades()[index][i].getName());
@@ -82,6 +85,7 @@ public class Hoteis implements Impressao{
     public void imprime(Integer indexEstado, Integer indexCidade) {
         System.out.println("\n=============================");
         System.out.println("Hoteis da cidade " + getCidades()[indexEstado][indexCidade] + ":");
+        System.out.println("=============================");
         System.out.println("Index     Hoteis");
         for (int i = 0; i < getHoteis()[indexEstado][indexCidade].length; i++){
             System.out.println(i + "         " + getHoteis()[indexEstado][indexCidade][i]);
@@ -92,6 +96,7 @@ public class Hoteis implements Impressao{
     public void imprimeQuartos(Integer indexEstado, Integer indexCidade, Integer indexHotel) {
         System.out.println("\n=============================");
         System.out.println("Hotel " + getHoteis()[indexEstado][indexCidade][indexHotel] +  ":");
+        System.out.println("=============================");
         for (int i = 0; i < getNumeroQuarto()[indexCidade][indexHotel].length; i++){
             System.out.printf("%s quarto:\n", i);
             System.out.println("Numero quarto: " + getNumeroQuarto()[indexCidade][indexHotel][i]);

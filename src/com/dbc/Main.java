@@ -20,9 +20,9 @@ public class Main {
                 programaAdmin();
             }
             else if(criarCliente().logar(login, senha)){
-                System.out.println("*****************");
-                System.out.println("Login efetuado!");
-                System.out.println("*****************");
+                System.out.println("*****************************");
+                System.out.println("        Login efetuado");
+                System.out.println("*****************************");
                 verificaLogin = true;
                 programaUsuario();
             }else {
@@ -148,7 +148,7 @@ public class Main {
                                         reserva.setListaQuarto(listaQuarto);
                                         reserva.setListaValor(listaValor);
 
-                                        System.out.println("Reserva concluída\n");
+                                        System.out.println("Reserva concluída!!!!\n");
 
                                         aux = false;
                                         return listaReserva.add(reserva);
@@ -202,21 +202,26 @@ public class Main {
         try {
             if(listaReserva.size() > 0){
                 System.out.println("\n===================================");
-                System.out.println("Reservas realizadas");
+                System.out.println("        Reservas realizadas");
+                System.out.println("===================================");
                 for(int i = 0; i < listaReserva.size(); i++){
-                    System.out.println("Estado: " + listaReserva.get(i).getListaEstado().get(0));
-                    System.out.println("Cidade: " + listaReserva.get(i).getListaCidade().get(0));
-                    System.out.println("Hotel: " + listaReserva.get(i).getListaHotel().get(0));
-                    System.out.println("Quarto: " + listaReserva.get(i).getListaQuarto().get(0));
-                    System.out.println("Valor: " + listaReserva.get(i).getListaValor().get(0));
+                    try {
+                        System.out.println("Estado: " + listaReserva.get(i).getListaEstado().get(0));
+                        System.out.println("Cidade: " + listaReserva.get(i).getListaCidade().get(0));
+                        System.out.println("Hotel: " + listaReserva.get(i).getListaHotel().get(0));
+                        System.out.println("Quarto: " + listaReserva.get(i).getListaQuarto().get(0));
+                        System.out.println("Valor: " + listaReserva.get(i).getListaValor().get(0));
+                        System.out.println("--------------------");
+                    }catch (IndexOutOfBoundsException ignored){
+                    }
+
                 }
                 System.out.println("===================================\n");
                 return true;
             }else {
                 System.err.println("Não existem reservas ainda.");
             }
-        }catch (IndexOutOfBoundsException e){
-            System.err.println("Não existem reservas ainda.");
+        }catch (IndexOutOfBoundsException ignored){
         }
         return false;
 
@@ -225,9 +230,17 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         try {
             if(listaReserva.size() > 0){
+                System.out.println("=============================");
+                System.out.println("       CANCELAMENTOS!!");
+                System.out.println("=============================");
+                System.out.println("Index     Hoteis");
                 for (int i = 0; i < listaReserva.size(); i++){
-                    System.out.println(i + " " + listaReserva.get(i).getListaHotel().get(0));
+                    try {
+                        System.out.println(i + "         " + listaReserva.get(i).getListaHotel().get(0));
+                    }catch (IndexOutOfBoundsException ignored){}
+
                 }
+                System.out.println("=============================\n");
                 while (true){
                     System.out.println("Escolha o index desejado para remoção:");
                     Integer indexRemocao = scanner.nextInt();
@@ -237,7 +250,7 @@ public class Main {
                         listaReserva.get(indexRemocao).getListaEstado().remove(0);
                         listaReserva.get(indexRemocao).getListaQuarto().remove(0);
                         listaReserva.get(indexRemocao).getListaValor().remove(0);
-
+                        System.err.println("Reserva cancelada!\n");
                         break;
                     }else {
                         System.err.println("Index incorreto!");
@@ -246,14 +259,20 @@ public class Main {
             }else {
                 System.err.println("Nenhuma reserva cadastrada...");
             }
-        }catch (IndexOutOfBoundsException e){
-            System.err.println("Nenhuma reserva cadastrada...");
+        }catch (IndexOutOfBoundsException ignored){
         }
     }
     static void opçaoQuatro(){
         Scanner scanner = new Scanner(System.in);
         if(opcaoDois()){
-            opcaoDois();
+            System.out.println("=============================");
+            System.out.println("          ATUALIZAR");
+            System.out.println("=============================");
+            System.out.println("Index     Hoteis");
+            for (int i = 0; i < listaReserva.size(); i++){
+                System.out.println(i + "         " + listaReserva.get(i).getListaHotel().get(0));
+            }
+            System.out.println("=============================");
             while (true){
                 System.out.println("Qual indice deseja atualizar? ");
                 int indice = scanner.nextInt();
@@ -269,6 +288,8 @@ public class Main {
         }
     }
     static void menu(){
+        System.out.println("\n=============================");
+        System.out.println("            MENU");
         System.out.println("=============================");
         System.out.println("[0] - Sair\n[1] - Cadastrar Reserva\n[2] - Listar Reservas\n[3] - Excluir" +
                 "\n[4] - Atualizar");
@@ -309,11 +330,7 @@ public class Main {
 
     }
     static void programaAdmin(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("*****************");
-        System.out.println("Login efetuado como ADMIN!");
-        System.out.println("*****************");
-        System.err.println("EM MANUTENÇÃO");
+        System.err.println("ADMIN EM MANUTENÇÃO");
+
     }
 }
-
