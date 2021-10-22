@@ -61,7 +61,7 @@ public class QuartosRepository implements Repositorio<Integer, Quartos>{
                 Hoteis hoteis = new Hoteis();
 
                 quartos.setIdQuarto(res.getInt("id_quartos"));
-                hoteis.setId_hotel(res.getInt("id_hoteis"));
+                hoteis.setIdHotel(res.getInt("id_hoteis"));
                 quartos.setNumeroQuarto(res.getInt("numero_quarto"));
                 quartos.setValorDiaria(res.getDouble("valor_diaria"));
                 quartos.setDescricao(res.getString("descricao"));

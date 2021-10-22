@@ -41,7 +41,7 @@ public class HoteisService {
     }
 
     // leitura
-    public void listarPessoas() {
+    public void listarHoteis() {
         try {
             List<Hoteis> listar = hoteisRepository.listar();
             listar.forEach(System.out::println);

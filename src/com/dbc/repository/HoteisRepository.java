@@ -113,9 +113,9 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
 
             while (res.next()) {
                 Hoteis hoteis = new Hoteis();
-                hoteis.setIdHotel(res.getInt("id_hotel"));
+                hoteis.setIdHotel(res.getInt("id_hoteis"));
                 Endereco endereco = new Endereco();
-                endereco.setId_endereco(res.getInt("id_endereco"));
+                endereco.setId_endereco(res.getInt("id_enderecos"));
                 hoteis.setEndereco(endereco);
                 hoteis.setNome(res.getString("nome"));
                 listaDeHoteis.add(hoteis);

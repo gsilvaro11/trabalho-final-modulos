@@ -1,5 +1,7 @@
 package com.dbc;
 
+import com.dbc.Service.HoteisService;
+import com.dbc.Service.QuartosService;
 import com.dbc.repository.ConexaoBancoDeDados;
 import com.dbc.repository.UsuarioRepository;
 
@@ -9,9 +11,21 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
-        Integer proximoId = new UsuarioRepository().getProximoId(ConexaoBancoDeDados.getConnection());
 
-        System.out.println(proximoId);
+        QuartosService quartosService = new QuartosService();
+        quartosService.listarQuartosPorHotel(1);
+
+//        int opcao = -1;
+//        while (opcao != 0) {
+//            System.out.println("Digite 1 para criar pessoa");
+//            System.out.println("Digite 2 para listar pessoas");
+//            System.out.println("Digite 3 para editar uma pessoa");
+//            System.out.println("Digite 4 para excluir pessoas");
+//            System.out.println("Digite 5 para criar contato");
+//            opcao = scanner.nextInt();
+//            scanner.nextLine();
+//            switch (opcao) {
+//                case 1: {
 
 
     }
