@@ -4,12 +4,12 @@ public class Hoteis {
     private Endereco endereco;
     private String nome;
 
-    public Integer getId_hotel() {
+    public Integer getIdHotel() {
         return idHotel;
     }
 
-    public void setId_hotel(Integer id_hotel) {
-        this.idHotel = id_hotel;
+    public void setIdHotel(Integer idHotel) {
+        this.idHotel = idHotel;
     }
 
     public Endereco getEndereco() {
@@ -20,20 +20,20 @@ public class Hoteis {
         this.endereco = endereco;
     }
 
-    public String getNome_hotel() {
+    public String getNome() {
         return nome;
     }
 
-    public void setNome_hotel(String nome_hotel) {
-        this.nome = nome_hotel;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     @Override
     public String toString() {
         return "Hoteis{" +
-                "id_hotel=" + idHotel +
+                "idHotel=" + idHotel +
                 ", endereco=" + endereco +
-                ", nome_hotel='" + nome + '\'' +
+                ", nome='" + nome + '\'' +
                 '}';
     }
 }

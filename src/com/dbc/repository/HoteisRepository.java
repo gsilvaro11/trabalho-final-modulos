@@ -33,7 +33,7 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
             con = ConexaoBancoDeDados.getConnection();
 
             Integer proximoId = this.getProximoId(con);
-            hoteis.setId_hotel(proximoId);
+            hoteis.setIdHotel(proximoId);
 
             String sql = "INSERT INTO HOTEL\n" +
                     "(ID_HOTEL,ID_ENDERECO, NOME)\n" +
@@ -41,9 +41,9 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
-            stmt.setInt(1, hoteis.getId_hotel());
+            stmt.setInt(1, hoteis.getIdHotel());
             stmt.setInt(2, hoteis.getEndereco().getId_endereco());
-            stmt.setString(3, hoteis.getNome_hotel());
+            stmt.setString(3, hoteis.getNome());
 
 
             int res = stmt.executeUpdate();
@@ -113,11 +113,11 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
 
             while (res.next()) {
                 Hoteis hoteis = new Hoteis();
-                hoteis.setId_hotel(res.getInt("id_hotel"));
+                hoteis.setIdHotel(res.getInt("id_hotel"));
                 Endereco endereco = new Endereco();
-                endereco.setId_endereco(res.getInt("id_Endereco"));
+                endereco.setId_endereco(res.getInt("id_endereco"));
                 hoteis.setEndereco(endereco);
-                hoteis.setNome_hotel(res.getString("nome"));
+                hoteis.setNome(res.getString("nome"));
                 listaDeHoteis.add(hoteis);
             }
         } catch (SQLException e) {
