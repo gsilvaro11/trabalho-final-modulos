@@ -1,11 +1,17 @@
 package com.dbc;
 
+import com.dbc.repository.ConexaoBancoDeDados;
+import com.dbc.repository.UsuarioRepository;
+
+import java.sql.SQLException;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
+        Integer proximoId = new UsuarioRepository().getProximoId(ConexaoBancoDeDados.getConnection());
 
+        System.out.println(proximoId);
 
 
     }

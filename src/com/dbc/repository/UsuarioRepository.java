@@ -3,19 +3,12 @@ package com.dbc.repository;
 import com.dbc.Usuario;
 import com.dbc.exceptions.BancoDeDadosException;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 
 public class UsuarioRepository implements Repositorio<Integer, Usuario>{
 
-    private UsuarioRepository usuarioRepository;
 
-    public UsuarioRepository(){
-        this.usuarioRepository = new UsuarioRepository();
-    }
 
     @Override
     public Integer getProximoId(Connection connection) throws SQLException {
@@ -32,16 +25,8 @@ public class UsuarioRepository implements Repositorio<Integer, Usuario>{
 
     @Override
     public Usuario adicionar(Usuario usuario) throws BancoDeDadosException {
-        Connection con = null;
-        try{
-            con = ConexaoBancoDeDados.getConnection();
-            Integer proximoId = this.getProximoId(con);
-            usuario.setId_Usuario(proxmoId);
-
-            String sql = "INSERT INTO PESSOA"
-        } catch ()
+        return null;
     }
-
     @Override
     public boolean remover(Integer id) throws BancoDeDadosException {
         return false;

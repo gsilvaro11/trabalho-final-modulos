@@ -1,2 +1,5 @@
-package com.dbc.Service;public class EnderecoServico {
+package com.dbc.Service;
+public class EnderecoService {
+
+
 }
