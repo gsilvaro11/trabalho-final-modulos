@@ -1,6 +1,7 @@
 package com.dbc.repository;
 
 import com.dbc.exceptions.BancoDeDadosException;
+import com.dbc.model.Endereco;
 import com.dbc.model.Hoteis;
 
 
@@ -35,19 +36,18 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
             hoteis.setId_hotel(proximoId);
 
             String sql = "INSERT INTO HOTEL\n" +
-                    "(ID_HOTEL,ID_CIDADES, NOME, ENDERECO, NUMERO_HOTEL)\n" +
-                    "VALUES(?, ?, ?, ?, ?)\n";
+                    "(ID_HOTEL,ID_ENDERECO, NOME)\n" +
+                    "VALUES(?, ?, ?)\n";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
             stmt.setInt(1, hoteis.getId_hotel());
-            stmt.setInt(2, hoteis.getCidade().getId_cidade());
+            stmt.setInt(2, hoteis.getEndereco().getId_endereco());
             stmt.setString(3, hoteis.getNome_hotel());
-            stmt.setString(4, hoteis.getEndereco());
-            stmt.setInt(5 , hoteis.getNumero_hotel());
+
 
             int res = stmt.executeUpdate();
-            System.out.println("Hotel foi adicionado com sucesso :" + hoteis.getNome_hotel());
+            System.out.println("Hotel foi adicionado com sucesso :" + res);
             return hoteis;
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
@@ -114,8 +114,9 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
             while (res.next()) {
                 Hoteis hoteis = new Hoteis();
                 hoteis.setId_hotel(res.getInt("id_hotel"));
-                hoteis.setCidade();
-
+                Endereco endereco = new Endereco();
+                endereco.setId_endereco(res.getInt("id_Endereco"));
+                hoteis.setEndereco(endereco);
                 hoteis.setNome_hotel(res.getString("nome"));
                 listaDeHoteis.add(hoteis);
             }

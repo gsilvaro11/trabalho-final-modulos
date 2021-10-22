@@ -1,16 +1,16 @@
 package com.dbc.model;
 public class Quartos {
-    private Integer id_quarto;
+    private Integer idQuarto;
     private Hoteis hoteis;
-    private Integer numero_quarto;
-    private Number valor_diaria;
+    private Integer numeroQuarto;
+    private Number valorDiaria;
 
-    public Integer getId_quarto() {
-        return id_quarto;
+    public Integer getIdQuarto() {
+        return idQuarto;
     }
 
-    public void setId_quarto(Integer id_quarto) {
-        this.id_quarto = id_quarto;
+    public void setIdQuarto(Integer idQuarto) {
+        this.idQuarto = idQuarto;
     }
 
     public Hoteis getHoteis() {
@@ -21,29 +21,29 @@ public class Quartos {
         this.hoteis = hoteis;
     }
 
-    public Integer getNumero_quarto() {
-        return numero_quarto;
+    public Integer getNumeroQuarto() {
+        return numeroQuarto;
     }
 
-    public void setNumero_quarto(Integer numero_quarto) {
-        this.numero_quarto = numero_quarto;
+    public void setNumeroQuarto(Integer numeroQuarto) {
+        this.numeroQuarto = numeroQuarto;
     }
 
-    public Number getValor_diaria() {
-        return valor_diaria;
+    public Number getValorDiaria() {
+        return valorDiaria;
     }
 
-    public void setValor_diaria(Number valor_diaria) {
-        this.valor_diaria = valor_diaria;
+    public void setValorDiaria(Number valorDiaria) {
+        this.valorDiaria = valorDiaria;
     }
 
     @Override
     public String toString() {
         return "Quartos{" +
-                "id_quarto=" + id_quarto +
+                "idQuarto=" + idQuarto +
                 ", hoteis=" + hoteis +
-                ", numero_quarto=" + numero_quarto +
-                ", valor_diaria=" + valor_diaria +
+                ", numeroQuarto=" + numeroQuarto +
+                ", valorDiaria=" + valorDiaria +
                 '}';
     }
 }

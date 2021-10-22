@@ -1,2 +1,3 @@
-package com.dbc.Service;public class HoteisService {
+package com.dbc.Service;
+public class HoteisService {
 }

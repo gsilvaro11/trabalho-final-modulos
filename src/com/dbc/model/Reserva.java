@@ -3,18 +3,18 @@ package com.dbc.model;
 import java.time.LocalDate;
 
 public class Reserva {
-    private Integer id_reserva;
+    private Integer idReserva;
     private Hoteis hoteis;
     private Quartos quartos;
     private Usuario usuario;
-    private LocalDate data_reserva;
+    private LocalDate dataReserva;
 
-    public Integer getId_reserva() {
-        return id_reserva;
+    public Integer getIdReserva() {
+        return idReserva;
     }
 
-    public void setId_reserva(Integer id_reserva) {
-        this.id_reserva = id_reserva;
+    public void setIdReserva(Integer idReserva) {
+        this.idReserva = idReserva;
     }
 
     public Hoteis getHoteis() {
@@ -41,22 +41,22 @@ public class Reserva {
         this.usuario = usuario;
     }
 
-    public LocalDate getData_reserva() {
-        return data_reserva;
+    public LocalDate getDataReserva() {
+        return dataReserva;
     }
 
-    public void setData_reserva(LocalDate data_reserva) {
-        this.data_reserva = data_reserva;
+    public void setDataReserva(LocalDate dataReserva) {
+        this.dataReserva = dataReserva;
     }
 
     @Override
     public String toString() {
         return "Reserva{" +
-                "id_reserva=" + id_reserva +
+                "idReserva=" + idReserva +
                 ", hoteis=" + hoteis +
                 ", quartos=" + quartos +
                 ", usuario=" + usuario +
-                ", data_reserva=" + data_reserva +
+                ", dataReserva=" + dataReserva +
                 '}';
     }
 }

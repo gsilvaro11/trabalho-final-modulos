@@ -1,29 +1,29 @@
 package com.dbc.model;
 public class Estado {
-    private Integer id_estado;
-    private String nome_estado;
+    private Integer idEstado;
+    private String nome;
 
     public Integer getId_estado() {
-        return id_estado;
+        return idEstado;
     }
 
     public void setId_estado(Integer id_estado) {
-        this.id_estado = id_estado;
+        this.idEstado = id_estado;
     }
 
     public String getNome_estado() {
-        return nome_estado;
+        return nome;
     }
 
     public void setNome_estado(String nome_estado) {
-        this.nome_estado = nome_estado;
+        this.nome = nome_estado;
     }
 
     @Override
     public String toString() {
         return "Estado{" +
-                "id_estado=" + id_estado +
-                ", nome_estado='" + nome_estado + '\'' +
+                "id_estado=" + idEstado +
+                ", nome_estado='" + nome + '\'' +
                 '}';
     }
 }

@@ -1,17 +1,17 @@
 package com.dbc.model;
 public class Endereco {
-    private Integer id_endereco;
+    private Integer idEndereco;
     private Cidade cidade;
     private String cep;
     private Integer numero;
     private String logradouro;
 
     public Integer getId_endereco() {
-        return id_endereco;
+        return idEndereco;
     }
 
     public void setId_endereco(Integer id_endereco) {
-        this.id_endereco = id_endereco;
+        this.idEndereco = id_endereco;
     }
 
     public Cidade getCidade() {
@@ -50,7 +50,7 @@ public class Endereco {
     @Override
     public String toString() {
         return "Endereco{" +
-                "id_endereco=" + id_endereco +
+                "id_endereco=" + idEndereco +
                 ", cidade=" + cidade +
                 ", cep='" + cep + '\'' +
                 ", numero=" + numero +

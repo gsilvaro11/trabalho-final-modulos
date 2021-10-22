@@ -3,28 +3,28 @@ package com.dbc.model;
 import java.time.LocalDate;
 
 public class Usuario {
-    private Integer id_usuario;
-    private String nome_usuario;
+    private Integer idUsuario;
+    private String nome;
     private String cpf;
-    private LocalDate data_nascimento;
+    private LocalDate dataNascimento;
     private String login;
     private String senha;
-    private Integer tipo_usuario; // 0 - Comum, 1 - Admin.
+    private Integer tipoUsuario; // 0 - Comum, 1 - Admin.
 
-    public Integer getId_usuario() {
-        return id_usuario;
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId_usuario(Integer id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public String getNome_usuario() {
-        return nome_usuario;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNome_usuario(String nome_usuario) {
-        this.nome_usuario = nome_usuario;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getCpf() {
@@ -35,12 +35,12 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    public LocalDate getData_nascimento() {
-        return data_nascimento;
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setData_nascimento(LocalDate data_nascimento) {
-        this.data_nascimento = data_nascimento;
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public String getLogin() {
@@ -59,24 +59,24 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Integer getTipo_usuario() {
-        return tipo_usuario;
+    public Integer getTipoUsuario() {
+        return tipoUsuario;
     }
 
-    public void setTipo_usuario(Integer tipo_usuario) {
-        this.tipo_usuario = tipo_usuario;
+    public void setTipoUsuario(Integer tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 
     @Override
     public String toString() {
         return "Usuario{" +
-                "id_usuario=" + id_usuario +
-                ", nome_usuario='" + nome_usuario + '\'' +
+                "idUsuario=" + idUsuario +
+                ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
-                ", data_nascimento=" + data_nascimento +
+                ", dataNascimento=" + dataNascimento +
                 ", login='" + login + '\'' +
                 ", senha='" + senha + '\'' +
-                ", tipo_usuario=" + tipo_usuario +
+                ", tipoUsuario=" + tipoUsuario +
                 '}';
     }
 }
