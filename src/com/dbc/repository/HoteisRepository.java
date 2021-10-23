@@ -181,6 +181,42 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
             }
         }
     }
+
+    public Hoteis getHoteisPorId(Integer id)  throws BancoDeDadosException {
+        Hoteis hoteis = new Hoteis();
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+
+            String sql = "SELECT ID_HOTEIS, H.NOME " +
+                    " FROM HOTEIS H\n" +
+                    "\tWHERE ID_HOTEIS = ? ";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+            // Executa-se a consulta
+
+
+            ResultSet res = stmt.executeQuery();
+
+            while (res.next()) {
+                hoteis.setIdHotel(res.getInt("id_hoteis"));
+
+                hoteis.setNome(res.getString("nome"));
+            }
+            return hoteis;
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
 
 

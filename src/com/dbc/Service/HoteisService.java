@@ -60,5 +60,14 @@ public class HoteisService {
         }
     }
 
+    public Hoteis getHoteisPorId(Integer Id){
+        try {
+            return hoteisRepository.getHoteisPorId(Id);
+        } catch (BancoDeDadosException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }
 

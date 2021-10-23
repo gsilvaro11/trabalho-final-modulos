@@ -51,21 +51,23 @@ public class Main {
                     System.out.println("Digite o índice da cidade: ");
                     Integer indexCidade = scanner.nextInt();
                     hoteisService.listarHoteisPorCidade(indexCidade);
+
                     System.out.println("Digite o índice do Hotel: ");
                     Integer indexHotel = scanner.nextInt();
                     quartosService.listarQuartosPorHotel(indexHotel);
                     System.out.println("Digite o índice do Quarto ");
                     Integer indexQuarto = scanner.nextInt();
+
                     quartos.setIdQuarto(indexQuarto);
-                    hoteis.setIdHotel(indexHotel);
+                    //hoteis.setIdHotel(indexHotel);
                     usuario.setIdUsuario(1);
 
-                    reserva.setHoteis(hoteis);
-                    reserva.setQuartos(quartos);
-                    reserva.setUsuario(usuario);
+                    reserva.setHoteis(hoteisService.getHoteisPorId(indexHotel));
+                    reserva.setQuartos(quartosService.getQuartoPorId(indexQuarto));
+                    reserva.setUsuario(usuarioService.getUsuarioPorId(1));
                     reserva.setDataReserva(LocalDate.parse(dataLocal, formatter));
                     reservaService.adicionarReserva(reserva);
-
+                    break;
 
                 }
                 case 2: { //listar

@@ -87,4 +87,40 @@ public class QuartosRepository implements Repositorio<Integer, Quartos>{
     }
 
 
+    public Quartos getQuartoPorId(Integer id) throws BancoDeDadosException {
+        Quartos quartos = new Quartos();
+        Connection con = null;
+
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+            String sql = "SELECT ID_QUARTOS , ID_HOTEIS , NUMERO_QUARTO, VALOR_DIARIA, DESCRICAO  " +
+                    "FROM QUARTOS WHERE ID_QUARTOS = ? ";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet res = stmt.executeQuery();
+
+            while (res.next()) {
+
+                quartos.setIdQuarto(res.getInt("id_quartos"));
+                quartos.setNumeroQuarto(res.getInt("numero_quarto"));
+                quartos.setValorDiaria(res.getDouble("valor_diaria"));
+                quartos.setDescricao(res.getString("descricao"));
+
+            }
+
+
+        }catch (SQLException e){
+            throw new BancoDeDadosException(e.getCause());
+        }finally {
+            try {
+                if(con != null){
+                    con.close();
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return quartos;
+    }
 }
