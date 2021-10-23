@@ -1,6 +1,7 @@
 package com.dbc.repository;
 
 import com.dbc.exceptions.BancoDeDadosException;
+import com.dbc.model.Quartos;
 import com.dbc.model.Usuario;
 
 import java.sql.*;
@@ -40,5 +41,42 @@ public class UsuarioRepository implements Repositorio<Integer, Usuario>{
     @Override
     public List<Usuario> listar() throws BancoDeDadosException {
         return null;
+    }
+
+    public Usuario getUsuarioPorId(Integer id)throws BancoDeDadosException {
+        Usuario usuario = new Usuario();
+        Connection con = null;
+
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+            String sql = "SELECT ID_USUARIO, NOME, CPF, DATA_NASCIMENTO  " +
+                    "FROM USUARIO WHERE ID_USUARIO = ? ";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet res = stmt.executeQuery();
+
+            while (res.next()) {
+
+                usuario.setIdUsuario(res.getInt("id_usuario"));
+                usuario.setNome(res.getString("nome"));
+                usuario.setCpf(res.getString("cpf"));
+                usuario.setDataNascimento(res.getDate("data_nascimento").toLocalDate());
+
+            }
+
+
+        }catch (SQLException e){
+            throw new BancoDeDadosException(e.getCause());
+        }finally {
+            try {
+                if(con != null){
+                    con.close();
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return usuario;
     }
 }
