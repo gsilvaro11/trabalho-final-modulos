@@ -1,7 +1,7 @@
 package com.dbc.Service;
 
-import com.dbc.Usuario;
 import com.dbc.exceptions.BancoDeDadosException;
+import com.dbc.model.Usuario;
 import com.dbc.repository.UsuarioRepository;
 
 public class UsuarioService {

@@ -3,27 +3,27 @@ public class Estado {
     private Integer idEstado;
     private String nome;
 
-    public Integer getId_estado() {
+    public Integer getIdEstado() {
         return idEstado;
     }
 
-    public void setId_estado(Integer id_estado) {
-        this.idEstado = id_estado;
+    public void setIdEstado(Integer idEstado) {
+        this.idEstado = idEstado;
     }
 
-    public String getNome_estado() {
+    public String getNome() {
         return nome;
     }
 
-    public void setNome_estado(String nome_estado) {
-        this.nome = nome_estado;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     @Override
     public String toString() {
         return "Estado{" +
-                "id_estado=" + idEstado +
-                ", nome_estado='" + nome + '\'' +
+                "idEstado=" + idEstado +
+                ", nome='" + nome + '\'' +
                 '}';
     }
 }

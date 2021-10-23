@@ -1,6 +1,7 @@
 package com.dbc.repository;
 
 import com.dbc.exceptions.BancoDeDadosException;
+import com.dbc.model.Cidade;
 import com.dbc.model.Endereco;
 import com.dbc.model.Hoteis;
 
@@ -44,6 +45,8 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
             stmt.setInt(1, hoteis.getIdHotel());
             stmt.setInt(2, hoteis.getEndereco().getId_endereco());
             stmt.setString(3, hoteis.getNome());
+
+//
 
 
             int res = stmt.executeUpdate();
@@ -133,5 +136,48 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
         }
         return listaDeHoteis;
     }
+    public List<Hoteis> listarHoteisPorCidade(Integer idCidade) throws BancoDeDadosException {
+        List<Hoteis> listaDeHoteisPorCidade = new ArrayList<>();
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+
+            String sql = "SELECT H.ID_HOTEIS,c.NOME_CIDADES FROM HOTEIS H\n" +
+                    "\tLEFT JOIN ENDERECOS e ON (H.ID_ENDERECOS = e.ID_ENDERECOS)\n" +
+                    "\tLEFT JOIN CIDADES c ON (e.ID_CIDADES = c.ID_CIDADES)\n" +
+                    "\tWHERE c.ID_CIDADES = ?\n" +
+                    "\tORDER BY H.ID_HOTEIS";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, idCidade);
+            // Executa-se a consulta
+
+
+            ResultSet res = stmt.executeQuery();
+
+            while (res.next()) {
+                Hoteis hoteis = new Hoteis();
+                hoteis.setIdHotel(res.getInt("id_hoteis"));
+                Endereco endereco = new Endereco();
+
+                endereco.setId_endereco(res.getInt("id_enderecos"));
+                hoteis.setEndereco(endereco);
+                hoteis.setNome(res.getString("nome"));
+                listaDeHoteisPorCidade.add(hoteis);
+            }
+            return listaDeHoteisPorCidade;
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
+}
+
 

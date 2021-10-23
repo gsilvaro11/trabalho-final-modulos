@@ -5,12 +5,12 @@ public class Cidade {
     private String nome;
     private Estado estado;
 
-    public Integer getId_cidade() {
+    public Integer getIdCidade() {
         return idCidade;
     }
 
-    public void setId_cidade(Integer id_cidade) {
-        this.idCidade = id_cidade;
+    public void setIdCidade(Integer idCidade) {
+        this.idCidade = idCidade;
     }
 
     public String getNome() {
@@ -29,11 +29,10 @@ public class Cidade {
         this.estado = estado;
     }
 
-
     @Override
     public String toString() {
         return "Cidade{" +
-                "id_cidade=" + idCidade +
+                "idCidade=" + idCidade +
                 ", nome='" + nome + '\'' +
                 ", estado=" + estado +
                 '}';

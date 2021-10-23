@@ -1,35 +1,80 @@
 package com.dbc;
 
-import com.dbc.Service.HoteisService;
-import com.dbc.Service.QuartosService;
+import com.dbc.Service.*;
+import com.dbc.model.*;
 import com.dbc.repository.ConexaoBancoDeDados;
 import com.dbc.repository.UsuarioRepository;
 
+import javax.sound.midi.Soundbank;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
+        ReservaService reservaService = new ReservaService();
         QuartosService quartosService = new QuartosService();
-        quartosService.listarQuartosPorHotel(1);
+        UsuarioService usuarioService = new UsuarioService();
+        HoteisService hoteisService = new HoteisService();
+        CidadeService cidadeService = new CidadeService();
+        EstadoService estadoService = new EstadoService();
+        EnderecoService enderecoService = new EnderecoService();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataLocal = dtf.format(LocalDateTime.now());
 
-//        int opcao = -1;
-//        while (opcao != 0) {
-//            System.out.println("Digite 1 para criar pessoa");
-//            System.out.println("Digite 2 para listar pessoas");
-//            System.out.println("Digite 3 para editar uma pessoa");
-//            System.out.println("Digite 4 para excluir pessoas");
-//            System.out.println("Digite 5 para criar contato");
-//            opcao = scanner.nextInt();
-//            scanner.nextLine();
-//            switch (opcao) {
-//                case 1: {
+        int opcao = -1;
+        while (opcao != 0) {
+            System.out.println("Digite 1 para criar reserva");
+            System.out.println("Digite 2 para listar reserva");
+            System.out.println("Digite 3 para editar reserva");
+            System.out.println("Digite 4 para excluir reserva");
+            System.out.println("Digite 5 para adicionar hotel");
+            System.out.println("Digite 6 para listar hotel");
+            System.out.println("Digite 7 para editar hotel");
+            System.out.println("Digite 8 para excluir hotel");
+            System.out.println("Digite 0 para sair");
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+            switch (opcao) {
+                case 1: {
+
+                    Reserva reserva = new Reserva();
+                    Hoteis hoteis = new Hoteis();
+                    Quartos quartos = new Quartos();
+                    Usuario usuario = new Usuario();
+                    estadoService.listarEstados();
+                    System.out.println("Digite o índice do estado: ");
+                    Integer indexEstado = scanner.nextInt();
+                    cidadeService.listarCidadesPorEstado(indexEstado);
+                    System.out.println("Digite o índice da cidade: ");
+                    Integer indexCidade = scanner.nextInt();
+                    hoteisService.listarHoteisPorCidade(indexCidade);
+                    System.out.println("Digite o índice do Hotel: ");
+                    Integer indexHotel = scanner.nextInt();
+                    System.out.println("Digite o índice do Quarto ");
+                    Integer indexQuarto = scanner.nextInt();
+                    quartos.setIdQuarto(indexQuarto);
+                    hoteis.setIdHotel(indexHotel);
+                    usuario.setIdUsuario(1);
+
+                    reserva.setHoteis(hoteis);
+                    reserva.setQuartos(quartos);
+                    reserva.setUsuario(usuario);
+                    reserva.setDataReserva(LocalDate.parse(dataLocal, formatter));
+                    reservaService.adicionarReserva(reserva);
 
 
+                }
+            }
+        }
     }
 }
+
 //        boolean verificaLogin = false;
 
 //        while (true) {

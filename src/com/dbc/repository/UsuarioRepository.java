@@ -1,7 +1,7 @@
 package com.dbc.repository;
 
-import com.dbc.Usuario;
 import com.dbc.exceptions.BancoDeDadosException;
+import com.dbc.model.Usuario;
 
 import java.sql.*;
 import java.util.List;

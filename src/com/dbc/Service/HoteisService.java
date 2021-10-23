@@ -9,7 +9,9 @@ import java.util.List;
 public class HoteisService {
     private HoteisRepository hoteisRepository;
 
-    public HoteisService(){hoteisRepository = new HoteisRepository();}
+    public HoteisService() {
+        hoteisRepository = new HoteisRepository();
+    }
 
     public void adicionar(Hoteis hoteis) {
         try {
@@ -45,6 +47,14 @@ public class HoteisService {
         try {
             List<Hoteis> listar = hoteisRepository.listar();
             listar.forEach(System.out::println);
+        } catch (BancoDeDadosException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void listarHoteisPorCidade(Integer idCidade) {
+        try {
+            hoteisRepository.listarHoteisPorCidade(idCidade).forEach(System.out::println);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }
