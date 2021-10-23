@@ -14,7 +14,7 @@ public class ReservaService {
     public void adicionarReserva(Reserva reserva) {
         try {
             Reserva reservaAdicionada = reservaRepository.adicionar(reserva);
-            System.out.println("reserva adicinada com sucesso! " + reservaAdicionada);
+            System.out.println("reserva adicionada com sucesso! " + reservaAdicionada);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }
@@ -45,6 +45,14 @@ public class ReservaService {
         try {
             List<Reserva> listar = reservaRepository.listar();
             listar.forEach(System.out::println);
+        } catch (BancoDeDadosException e) {
+            e.printStackTrace();
+        }
+    }
+    public void removerReservaPorHotel(Integer id) {
+        try {
+            boolean conseguiuRemover = reservaRepository.removerPorHotel(id);
+            System.out.println("reserva removida? " + conseguiuRemover + "| com id=" + id);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }

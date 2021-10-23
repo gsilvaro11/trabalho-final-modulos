@@ -10,7 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReservaRepository implements Repositorio <Integer , Reserva>{
+public class ReservaRepository implements Repositorio <Integer , Reserva> {
     @Override
     public Integer getProximoId(Connection connection) throws SQLException {
         String sql = "SELECT seq_reservas.nextval mysequence from DUAL";
@@ -113,7 +113,7 @@ public class ReservaRepository implements Repositorio <Integer , Reserva>{
             stmt.setInt(2, reserva.getQuartos().getIdQuarto());
             stmt.setInt(3, reserva.getUsuario().getIdUsuario());
             stmt.setDate(4, Date.valueOf(reserva.getDataReserva()));
-            stmt.setInt(5,id);
+            stmt.setInt(5, id);
 
             // Executa-se a consulta
             int res = stmt.executeUpdate();
@@ -163,17 +163,46 @@ public class ReservaRepository implements Repositorio <Integer , Reserva>{
             }
 
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
-        }finally {
+        } finally {
             try {
-                if(con != null){
+                if (con != null) {
                     con.close();
                 }
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
         return listaReserva;
+    }
+
+    public boolean removerPorHotel(Integer id) throws BancoDeDadosException {
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+            String sql = "DELETE FROM RESERVA WHERE id_HOTEIS = ?";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1, id);
+
+            // Executa-se a consulta
+            int res = stmt.executeUpdate();
+            System.out.println("removerPessoaPorId.res=" + res);
+
+            return res > 0;
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

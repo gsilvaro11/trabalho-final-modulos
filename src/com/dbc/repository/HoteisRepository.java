@@ -98,7 +98,38 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
 
     @Override
     public boolean editar(Integer id, Hoteis hoteis) throws BancoDeDadosException {
-        return false;
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+            StringBuilder sql = new StringBuilder();
+            sql.append("UPDATE HOTEIS SET ");
+            sql.append(" id_enderecos = ?,");
+            sql.append(" nome = ?");
+            sql.append(" WHERE id_hoteis = ? ");
+
+            PreparedStatement stmt = con.prepareStatement(sql.toString());
+
+            stmt.setInt(1, hoteis.getEndereco().getId_endereco());
+            stmt.setString(2, hoteis.getNome());
+            stmt.setInt(3,id);
+
+            // Executa-se a consulta
+            int res = stmt.executeUpdate();
+            System.out.println("editarHotel.res=" + res);
+
+            return res > 0;
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

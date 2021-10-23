@@ -2,7 +2,9 @@ package com.dbc.Service;
 
 import com.dbc.exceptions.BancoDeDadosException;
 import com.dbc.model.Hoteis;
+import com.dbc.repository.EnderecoRepository;
 import com.dbc.repository.HoteisRepository;
+import com.dbc.repository.ReservaRepository;
 
 import java.util.List;
 
@@ -23,8 +25,10 @@ public class HoteisService {
     }
 
     // remoção
-    public void removerPessoa(Integer id) {
+    public void removerHotel(Integer id) {
+        ReservaService reservaService = new ReservaService();
         try {
+            reservaService.removerReservaPorHotel(id);
             boolean conseguiuRemover = hoteisRepository.remover(id);
             System.out.println("hotel removido? " + conseguiuRemover + "| com id=" + id);
         } catch (BancoDeDadosException e) {
@@ -33,10 +37,10 @@ public class HoteisService {
     }
 
     // atualização de um objeto
-    public void editarPessoa(Integer id, Hoteis pessoa) {
+    public void editarHotel(Integer id, Hoteis hoteis) {
         try {
-            boolean conseguiuEditar = hoteisRepository.editar(id, pessoa);
-            System.out.println("pessoa editada? " + conseguiuEditar + "| com id=" + id);
+            boolean conseguiuEditar = hoteisRepository.editar(id, hoteis);
+            System.out.println("Hotel editado? " + conseguiuEditar + "| com id=" + id);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }

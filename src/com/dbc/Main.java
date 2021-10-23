@@ -65,7 +65,7 @@ public class Main {
                     reserva.setUsuario(usuario);
                     reserva.setDataReserva(LocalDate.parse(dataLocal, formatter));
                     reservaService.adicionarReserva(reserva);
-
+                    break;
 
                 }
                 case 2: { //listar
@@ -127,6 +127,38 @@ public class Main {
                     endereco.setId_endereco(indexEndereco);
                     hoteis.setEndereco(endereco);
                     hoteisService.adicionar(hoteis);
+                    break;
+                }
+                case 6: { //listarHotel
+                    hoteisService.listarHoteis();
+                    break;
+                }
+                case 7: { //editarHotel
+                    hoteisService.listarHoteis();
+                    System.out.println("Digite o índice do Hotel: ");
+                    Integer indiceHotel = scanner.nextInt();
+
+
+                    Hoteis hoteis = new Hoteis();
+                    Endereco endereco = new Endereco();
+
+                    System.out.println("Digite o nome do hotel: ");
+                    String nomeHotel = scanner.next();
+                    enderecoService.listarEndereco();
+                    System.out.println("Digite o indice do endereco: ");
+                    Integer indexEndereco = scanner.nextInt();
+                    hoteis.setNome(nomeHotel);
+                    endereco.setId_endereco(indexEndereco);
+                    hoteis.setEndereco(endereco);
+                    hoteisService.editarHotel(indiceHotel, hoteis);
+                    break;
+                }
+                case 8: { //removerHotel
+                    hoteisService.listarHoteis();
+                    System.out.println("Digite o índice do Hotel: ");
+                    Integer indexHotel = scanner.nextInt();
+                    hoteisService.removerHotel(indexHotel);
+                    break;
                 }
             }
         }
