@@ -182,7 +182,7 @@ public class ReservaRepository implements Repositorio <Integer , Reserva> {
         try {
             con = ConexaoBancoDeDados.getConnection();
 
-            String sql = "DELETE FROM RESERVA WHERE id_HOTEIS = ?";
+            String sql = "DELETE FROM RESERVA WHERE id_hoteis = ?";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
