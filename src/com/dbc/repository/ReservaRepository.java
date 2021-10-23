@@ -95,7 +95,42 @@ public class ReservaRepository implements Repositorio <Integer , Reserva>{
 
     @Override
     public boolean editar(Integer id, Reserva reserva) throws BancoDeDadosException {
-        return false;
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+            StringBuilder sql = new StringBuilder();
+            sql.append("UPDATE RESERVA SET ");
+            sql.append(" id_hoteis = ?,");
+            sql.append(" id_quartos = ?,");
+            sql.append(" id_usuario = ?,");
+            sql.append(" data_reserva = ? ");
+            sql.append(" WHERE id_reserva = ? ");
+
+            PreparedStatement stmt = con.prepareStatement(sql.toString());
+
+            stmt.setInt(1, reserva.getHoteis().getIdHotel());
+            stmt.setInt(2, reserva.getQuartos().getIdQuarto());
+            stmt.setInt(3, reserva.getUsuario().getIdUsuario());
+            stmt.setDate(4, Date.valueOf(reserva.getDataReserva()));
+            stmt.setInt(5,id);
+
+            // Executa-se a consulta
+            int res = stmt.executeUpdate();
+            System.out.println("editarReserva.res=" + res);
+
+            return res > 0;
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

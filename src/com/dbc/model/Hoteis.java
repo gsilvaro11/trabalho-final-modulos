@@ -30,11 +30,9 @@ public class Hoteis {
 
     @Override
     public String toString() {
-        return "Hoteis{" +
-                "idHotel=" + idHotel +
-                ", endereco=" + endereco +
-                ", nome='" + nome + '\'' +
-                '}';
+        return "Hoteis - " + nome +
+                " [" + idHotel +
+                "]" ;
     }
 }
 

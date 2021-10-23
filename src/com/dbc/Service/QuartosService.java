@@ -22,9 +22,9 @@ public class QuartosService {
         }
     }
 
-    public void listarQuartosPorHotel(Integer numeroHotel){
+    public void listarQuartosPorHotel(Integer idHotel){
         try {
-            List<Quartos> listar = quartosRepository.listarQuartosPorHotel(numeroHotel);
+            List<Quartos> listar = quartosRepository.listarQuartosPorHotel(idHotel);
             listar.forEach(System.out::println);
         }catch (BancoDeDadosException e){
             e.printStackTrace();

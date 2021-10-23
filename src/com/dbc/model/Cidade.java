@@ -31,10 +31,8 @@ public class Cidade {
 
     @Override
     public String toString() {
-        return "Cidade{" +
-                "idCidade=" + idCidade +
-                ", nome='" + nome + '\'' +
-                ", estado=" + estado +
-                '}';
+        return "Cidade - " + nome +
+                " [" + idCidade + "]";
+
     }
 }

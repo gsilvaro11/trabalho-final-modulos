@@ -36,8 +36,8 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
             Integer proximoId = this.getProximoId(con);
             hoteis.setIdHotel(proximoId);
 
-            String sql = "INSERT INTO HOTEL\n" +
-                    "(ID_HOTEL,ID_ENDERECO, NOME)\n" +
+            String sql = "INSERT INTO HOTEIS\n" +
+                    "(ID_HOTEIS,ID_ENDERECOS, NOME)\n" +
                     "VALUES(?, ?, ?)\n";
 
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -117,10 +117,10 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
             while (res.next()) {
                 Hoteis hoteis = new Hoteis();
                 hoteis.setIdHotel(res.getInt("id_hoteis"));
+                hoteis.setNome(res.getString("nome"));
                 Endereco endereco = new Endereco();
                 endereco.setId_endereco(res.getInt("id_enderecos"));
                 hoteis.setEndereco(endereco);
-                hoteis.setNome(res.getString("nome"));
                 listaDeHoteis.add(hoteis);
             }
         } catch (SQLException e) {
@@ -165,7 +165,7 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
                 endereco.setLogradouro(res.getString("logradouro"));
                 endereco.setCep(res.getString("cep"));
                 hoteis.setEndereco(endereco);
-                hoteis.setNome(res.getString("nome_cidades"));
+                hoteis.setNome(res.getString("nome"));
                 listaDeHoteisPorCidade.add(hoteis);
             }
             return listaDeHoteisPorCidade;

@@ -45,7 +45,7 @@ public class QuartosRepository implements Repositorio<Integer, Quartos>{
 
 
     public List<Quartos> listarQuartosPorHotel(Integer idHotel) throws BancoDeDadosException {
-        List<Quartos> listaQuartos = new ArrayList<>();
+        List<Quartos> listaQuartosDeHotel = new ArrayList<>();
         Connection con = null;
 
         try {
@@ -55,7 +55,7 @@ public class QuartosRepository implements Repositorio<Integer, Quartos>{
 
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, idHotel);
-            ResultSet res = stmt.executeQuery(sql);
+            ResultSet res = stmt.executeQuery();
 
             while (res.next()) {
                 Quartos quartos = new Quartos();
@@ -68,7 +68,7 @@ public class QuartosRepository implements Repositorio<Integer, Quartos>{
                 quartos.setDescricao(res.getString("descricao"));
                 quartos.setHoteis(hoteis);
 
-                listaQuartos.add(quartos);
+                listaQuartosDeHotel.add(quartos);
             }
 
 
@@ -83,7 +83,7 @@ public class QuartosRepository implements Repositorio<Integer, Quartos>{
                 e.printStackTrace();
             }
         }
-        return listaQuartos;
+        return listaQuartosDeHotel;
     }
 
 

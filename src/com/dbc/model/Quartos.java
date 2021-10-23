@@ -6,14 +6,6 @@ public class Quartos {
     private Number valorDiaria;
     private String descricao;
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
     public Integer getIdQuarto() {
         return idQuarto;
     }
@@ -46,13 +38,20 @@ public class Quartos {
         this.valorDiaria = valorDiaria;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     @Override
     public String toString() {
-        return "Quartos{" +
-                "idQuarto=" + idQuarto +
-                ", hoteis=" + hoteis +
-                ", numeroQuarto=" + numeroQuarto +
-                ", valorDiaria=" + valorDiaria +
-                '}';
+        return "Quartos Nº: " + numeroQuarto +
+                ", Valor da diária: R$" + valorDiaria +
+                ", Descricão do Quarto: " + descricao +
+                ", Índice [" + idQuarto +  "]" ;
+
     }
 }

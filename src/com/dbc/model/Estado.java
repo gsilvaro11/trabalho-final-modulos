@@ -21,9 +21,8 @@ public class Estado {
 
     @Override
     public String toString() {
-        return "Estado{" +
-                "idEstado=" + idEstado +
-                ", nome='" + nome + '\'' +
-                '}';
+        return "Estado - " + nome +
+                " [" + idEstado +"]"
+                ;
     }
 }
