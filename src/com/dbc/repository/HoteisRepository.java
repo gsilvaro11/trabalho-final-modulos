@@ -72,7 +72,7 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
         try {
             con = ConexaoBancoDeDados.getConnection();
 
-            String sql = "DELETE FROM HOTEIS WHERE id_hoteis = ?";
+            String sql = "DELETE FROM VEM_SER.HOTEIS WHERE id_hoteis = ?";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 

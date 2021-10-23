@@ -26,9 +26,7 @@ public class HoteisService {
 
     // remoção
     public void removerHotel(Integer id) {
-        ReservaService reservaService = new ReservaService();
         try {
-            reservaService.removerReservaPorHotel(id);
             boolean conseguiuRemover = hoteisRepository.remover(id);
             System.out.println("hotel removido? " + conseguiuRemover + "| com id=" + id);
         } catch (BancoDeDadosException e) {
