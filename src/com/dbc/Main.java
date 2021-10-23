@@ -157,6 +157,7 @@ public class Main {
                     hoteisService.listarHoteis();
                     System.out.println("Digite o índice do Hotel: ");
                     Integer indexHotel = scanner.nextInt();
+                    reservaService.removerReservaPorHotel(indexHotel);
                     hoteisService.removerHotel(indexHotel);
                     break;
                 }
@@ -168,18 +169,6 @@ public class Main {
 
 
 
-//                    quartosService.listarQuartosPorHotel(indexHotel);
-//                    System.out.println("Digite o índice do Quarto ");
-//                    Integer indexQuarto = scanner.nextInt();
-//                    quartos.setIdQuarto(indexQuarto);
-//                    hoteis.setIdHotel(indexHotel);
-//                    usuario.setIdUsuario(1);
-//
-//                    reserva.setHoteis(hoteis);
-//                    reserva.setQuartos(quartos);
-//                    reserva.setUsuario(usuario);
-//                    reserva.setDataReserva(LocalDate.parse(dataLocal, formatter));
-//                    reservaService.adicionarReserva(reserva);
 
 
 
