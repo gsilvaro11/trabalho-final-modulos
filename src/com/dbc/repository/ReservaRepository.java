@@ -140,7 +140,13 @@ public class ReservaRepository implements Repositorio <Integer , Reserva> {
 
         try {
             con = ConexaoBancoDeDados.getConnection();
-            String sql = "SELECT ID_RESERVA, ID_HOTEIS, ID_QUARTOS, ID_USUARIO FROM RESERVA ";
+            String sql = "SELECT r.ID_RESERVA, r.ID_HOTEIS, h.NOME,\n" +
+                    "r.ID_QUARTOS, qt.NUMERO_QUARTO , qt.VALOR_DIARIA , qt.DESCRICAO ,\n" +
+                    "r.ID_USUARIO, u.NOME, u.CPF ,u.DATA_NASCIMENTO \n" +
+                    "FROM RESERVA  r\n" +
+                    "INNER JOIN HOTEIS h ON (h.ID_HOTEIS = r.ID_HOTEIS)\n" +
+                    "INNER JOIN QUARTOS qt ON (qt.ID_QUARTOS = r.ID_QUARTOS)\n" +
+                    "INNER JOIN USUARIO u ON (u.ID_USUARIO = r.ID_USUARIO) ";
 
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet res = stmt.executeQuery(sql);
@@ -152,9 +158,19 @@ public class ReservaRepository implements Repositorio <Integer , Reserva> {
                 Usuario usuario = new Usuario();
 
                 quartos.setIdQuarto(res.getInt("id_quartos"));
+                quartos.setNumeroQuarto(res.getInt("numero_quarto"));
+                quartos.setValorDiaria(res.getDouble("valor_diaria"));
+                quartos.setDescricao(res.getString("descricao"));
+
                 hoteis.setIdHotel(res.getInt("id_hoteis"));
+                hoteis.setNome(res.getString("nome"));
                 quartos.setHoteis(hoteis);
+
                 usuario.setIdUsuario(res.getInt("id_usuario"));
+                usuario.setNome(res.getString("nome"));
+                usuario.setCpf(res.getString("cpf"));
+                usuario.setDataNascimento(res.getDate("data_nascimento").toLocalDate());
+
                 reserva.setIdReserva(res.getInt("id_reserva"));
                 reserva.setHoteis(hoteis);
                 reserva.setQuartos(quartos);
