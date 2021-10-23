@@ -56,6 +56,7 @@ public class Main {
                     hoteisService.listarHoteisPorCidade(indexCidade);
                     System.out.println("Digite o índice do Hotel: ");
                     Integer indexHotel = scanner.nextInt();
+                    //quartosService.listarQuartosPorHotel(indexHotel);
                     System.out.println("Digite o índice do Quarto ");
                     Integer indexQuarto = scanner.nextInt();
                     quartos.setIdQuarto(indexQuarto);
@@ -69,6 +70,50 @@ public class Main {
                     reservaService.adicionarReserva(reserva);
 
 
+                }
+                case 2:{
+                    reservaService.listarReserva();
+                    break;
+                }
+                case 3:{
+                    reservaService.listarReserva();
+                    System.out.println("Digite o índice da Reserva: ");
+                    Integer indiceReserva = scanner.nextInt();
+
+                    Reserva reserva = new Reserva();
+                    Hoteis hoteis = new Hoteis();
+                    Quartos quartos = new Quartos();
+                    Usuario usuario = new Usuario();
+                    estadoService.listarEstados();
+                    System.out.println("Digite o índice do estado: ");
+                    Integer indexEstado = scanner.nextInt();
+                    cidadeService.listarCidadesPorEstado(indexEstado);
+                    System.out.println("Digite o índice da cidade: ");
+                    Integer indexCidade = scanner.nextInt();
+                    hoteisService.listarHoteisPorCidade(indexCidade);
+                    System.out.println("Digite o índice do Hotel: ");
+                    Integer indexHotel = scanner.nextInt();
+                    //quartosService.listarQuartosPorHotel(indexHotel);
+                    System.out.println("Digite o índice do Quarto ");
+                    Integer indexQuarto = scanner.nextInt();
+                    quartos.setIdQuarto(indexQuarto);
+                    hoteis.setIdHotel(indexHotel);
+                    usuario.setIdUsuario(1);
+
+                    reserva.setHoteis(hoteis);
+                    reserva.setQuartos(quartos);
+                    reserva.setUsuario(usuario);
+                    reserva.setDataReserva(LocalDate.parse(dataLocal, formatter));
+
+                    reservaService.editarReserva(indiceReserva, reserva);
+                    break;
+                }
+                case 4:{
+                    reservaService.listarReserva();
+                    System.out.println("Digite o índice da Reserva: ");
+                    Integer indexReserva = scanner.nextInt();
+                    reservaService.removerReserva(indexReserva);
+                    break;
                 }
             }
         }

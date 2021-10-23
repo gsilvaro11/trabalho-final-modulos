@@ -50,7 +50,8 @@ public class QuartosRepository implements Repositorio<Integer, Quartos>{
 
         try {
             con = ConexaoBancoDeDados.getConnection();
-            String sql = "SELECT * FROM QUARTOS WHERE id_hoteis = ? ";
+            String sql = "SELECT ID_QUARTOS , ID_HOTEIS , NUMERO_QUARTO, VALOR_DIARIA, DESCRICAO  " +
+                    "FROM QUARTOS WHERE ID_HOTEIS = ? ";
 
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, idHotel);

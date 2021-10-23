@@ -143,7 +143,8 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
             con = ConexaoBancoDeDados.getConnection();
 
 
-            String sql = "SELECT H.ID_HOTEIS,c.NOME_CIDADES FROM HOTEIS H\n" +
+            String sql = "SELECT H.ID_HOTEIS,c.NOME_CIDADES, H.ID_ENDERECOS, H.NOME, E.logradouro," +
+                    "numero_enderecos, cep FROM HOTEIS H\n" +
                     "\tLEFT JOIN ENDERECOS e ON (H.ID_ENDERECOS = e.ID_ENDERECOS)\n" +
                     "\tLEFT JOIN CIDADES c ON (e.ID_CIDADES = c.ID_CIDADES)\n" +
                     "\tWHERE c.ID_CIDADES = ?\n" +
@@ -161,8 +162,10 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
                 Endereco endereco = new Endereco();
 
                 endereco.setId_endereco(res.getInt("id_enderecos"));
+                endereco.setLogradouro(res.getString("logradouro"));
+                endereco.setCep(res.getString("cep"));
                 hoteis.setEndereco(endereco);
-                hoteis.setNome(res.getString("nome"));
+                hoteis.setNome(res.getString("nome_cidades"));
                 listaDeHoteisPorCidade.add(hoteis);
             }
             return listaDeHoteisPorCidade;

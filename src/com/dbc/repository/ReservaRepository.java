@@ -1,9 +1,13 @@
 package com.dbc.repository;
 
 import com.dbc.exceptions.BancoDeDadosException;
+import com.dbc.model.Hoteis;
+import com.dbc.model.Quartos;
 import com.dbc.model.Reserva;
+import com.dbc.model.Usuario;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReservaRepository implements Repositorio <Integer , Reserva>{
@@ -61,7 +65,32 @@ public class ReservaRepository implements Repositorio <Integer , Reserva>{
 
     @Override
     public boolean remover(Integer id) throws BancoDeDadosException {
-        return false;
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+            String sql = "DELETE FROM RESERVA WHERE id_reserva = ?";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1, id);
+
+            // Executa-se a consulta
+            int res = stmt.executeUpdate();
+            System.out.println("removerPessoaPorId.res=" + res);
+
+            return res > 0;
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -71,6 +100,45 @@ public class ReservaRepository implements Repositorio <Integer , Reserva>{
 
     @Override
     public List<Reserva> listar() throws BancoDeDadosException {
-        return null;
+        List<Reserva> listaReserva = new ArrayList<>();
+        Connection con = null;
+
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+            String sql = "SELECT ID_RESERVA, ID_HOTEIS, ID_QUARTOS, ID_USUARIO FROM RESERVA ";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet res = stmt.executeQuery(sql);
+
+            while (res.next()) {
+                Reserva reserva = new Reserva();
+                Quartos quartos = new Quartos();
+                Hoteis hoteis = new Hoteis();
+                Usuario usuario = new Usuario();
+
+                quartos.setIdQuarto(res.getInt("id_quartos"));
+                hoteis.setIdHotel(res.getInt("id_hoteis"));
+                quartos.setHoteis(hoteis);
+                usuario.setIdUsuario(res.getInt("id_usuario"));
+                reserva.setIdReserva(res.getInt("id_reserva"));
+                reserva.setHoteis(hoteis);
+                reserva.setQuartos(quartos);
+                reserva.setUsuario(usuario);
+                listaReserva.add(reserva);
+            }
+
+
+        }catch (SQLException e){
+            throw new BancoDeDadosException(e.getCause());
+        }finally {
+            try {
+                if(con != null){
+                    con.close();
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return listaReserva;
     }
 }
