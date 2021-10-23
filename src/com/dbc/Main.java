@@ -64,7 +64,8 @@ public class Main {
 
                     reserva.setHoteis(hoteisService.getHoteisPorId(indexHotel));
                     reserva.setQuartos(quartosService.getQuartoPorId(indexQuarto));
-                    reserva.setUsuario(usuarioService.getUsuarioPorId(1));
+                    //reserva.setUsuario(usuarioService.getUsuarioPorId(1));
+                    reserva.setUsuario(usuario);
                     reserva.setDataReserva(LocalDate.parse(dataLocal, formatter));
                     reservaService.adicionarReserva(reserva);
                     break;
