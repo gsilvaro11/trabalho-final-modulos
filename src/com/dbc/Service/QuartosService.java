@@ -31,4 +31,13 @@ public class QuartosService {
         }
     }
 
+    public  Quartos getQuartoPorId(Integer id){
+        try {
+            return quartosRepository.getQuartoPorId(id);
+        } catch (BancoDeDadosException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

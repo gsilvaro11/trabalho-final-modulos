@@ -20,5 +20,14 @@ public class UsuarioService {
         }
     }
 
+    public Usuario getUsuarioPorId(Integer id){
+        try {
+           return usuarioRepository.getUsuarioPorId(id);
+        } catch (BancoDeDadosException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
 }
