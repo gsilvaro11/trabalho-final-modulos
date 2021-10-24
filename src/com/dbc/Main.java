@@ -161,6 +161,7 @@ public class Main {
                     System.out.println("Digite o índice do Hotel: ");
                     Integer indexHotel = scanner.nextInt();
                     reservaService.removerReservaPorHotel(indexHotel);
+                    quartosService.removerQuartoPorHotel(indexHotel);
                     hoteisService.removerHotel(indexHotel);
                     break;
                 }

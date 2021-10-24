@@ -40,4 +40,12 @@ public class QuartosService {
         }
     }
 
+    public void removerQuartoPorHotel(Integer indexHotel) {
+        try {
+            boolean conseguiuRemover = quartosRepository.removerPorHotel(indexHotel);
+            System.out.println("quarto removido? " + conseguiuRemover + "| com id=" + indexHotel);
+        } catch (BancoDeDadosException e) {
+            e.printStackTrace();
+        }
+    }
 }
