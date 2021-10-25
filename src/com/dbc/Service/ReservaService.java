@@ -14,7 +14,7 @@ public class ReservaService {
     public void adicionarReserva(Reserva reserva) {
         try {
             Reserva reservaAdicionada = reservaRepository.adicionar(reserva);
-            System.out.println("reserva adicionada com sucesso! " + reservaAdicionada);
+//            System.out.println("reserva adicionada com sucesso! " + reservaAdicionada);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }
@@ -24,7 +24,7 @@ public class ReservaService {
     public void removerReserva(Integer id) {
         try {
             boolean conseguiuRemover = reservaRepository.remover(id);
-            System.out.println("reserva removida? " + conseguiuRemover + "| com id=" + id);
+//            System.out.println("reserva removida? " + conseguiuRemover + "| com id=" + id);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }
@@ -34,7 +34,7 @@ public class ReservaService {
     public void editarReserva(Integer id, Reserva reserva) {
         try {
             boolean conseguiuEditar = reservaRepository.editar(id, reserva);
-            System.out.println("reserva editada? " + conseguiuEditar + "| com id=" + id);
+//            System.out.println("reserva editada? " + conseguiuEditar + "| com id=" + id);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }
@@ -52,7 +52,7 @@ public class ReservaService {
     public void removerReservaPorHotel(Integer id) {
         try {
             boolean conseguiuRemover = reservaRepository.removerPorHotel(id);
-            System.out.println("reserva removida? " + conseguiuRemover + "| com id=" + id);
+//            System.out.println("reserva removida? " + conseguiuRemover + "| com id=" + id);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }

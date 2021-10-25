@@ -138,7 +138,7 @@ public class QuartosRepository implements Repositorio<Integer, Quartos>{
 
             // Executa-se a consulta
             int res = stmt.executeUpdate();
-            System.out.println("removerPessoaPorId.res=" + res);
+//            System.out.println("removerPessoaPorId.res=" + res);
 
             return res > 0;
         } catch (SQLException e) {

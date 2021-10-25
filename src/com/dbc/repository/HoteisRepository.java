@@ -50,7 +50,7 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
 
 
             int res = stmt.executeUpdate();
-            System.out.println("Hotel foi adicionado com sucesso :" + res);
+            System.out.println("Hotel foi adicionado com sucesso.");
             return hoteis;
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
@@ -80,7 +80,7 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
 
             // Executa-se a consulta
             int res = stmt.executeUpdate();
-            System.out.println("removerHotelPorId.res=" + res);
+            System.out.println("Hotel removido com sucesso.");
 
             return res > 0;
         } catch (SQLException e) {
@@ -116,7 +116,7 @@ public class HoteisRepository implements Repositorio<Integer , Hoteis> {
 
             // Executa-se a consulta
             int res = stmt.executeUpdate();
-            System.out.println("editarHotel.res=" + res);
+            System.out.println("Hotel editado com sucesso.");
 
             return res > 0;
         } catch (SQLException e) {

@@ -18,7 +18,7 @@ public class HoteisService {
     public void adicionar(Hoteis hoteis) {
         try {
             Hoteis hotelAdicionado = hoteisRepository.adicionar(hoteis);
-            System.out.println("Hotel adicionado com sucesso! " + hotelAdicionado);
+//            System.out.println("Hotel adicionado com sucesso! " + hotelAdicionado);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }
@@ -28,7 +28,7 @@ public class HoteisService {
     public void removerHotel(Integer id) {
         try {
             boolean conseguiuRemover = hoteisRepository.remover(id);
-            System.out.println("hotel removido? " + conseguiuRemover + "| com id=" + id);
+//            System.out.println("hotel removido? " + conseguiuRemover + "| com id=" + id);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }
@@ -38,7 +38,7 @@ public class HoteisService {
     public void editarHotel(Integer id, Hoteis hoteis) {
         try {
             boolean conseguiuEditar = hoteisRepository.editar(id, hoteis);
-            System.out.println("Hotel editado? " + conseguiuEditar + "| com id=" + id);
+//            System.out.println("Hotel editado? " + conseguiuEditar + "| com id=" + id);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }

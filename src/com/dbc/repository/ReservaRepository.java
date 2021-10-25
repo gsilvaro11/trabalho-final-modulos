@@ -48,7 +48,7 @@ public class ReservaRepository implements Repositorio <Integer , Reserva> {
             stmt.setDate(5, Date.valueOf(reserva.getDataReserva()));
 
             int res = stmt.executeUpdate();
-            System.out.println("adicionarReserva.res=" + res);
+            System.out.println("\nReserva adcionada com sucesso.\n");
             return reserva;
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
@@ -77,7 +77,7 @@ public class ReservaRepository implements Repositorio <Integer , Reserva> {
 
             // Executa-se a consulta
             int res = stmt.executeUpdate();
-            System.out.println("removerPessoaPorId.res=" + res);
+            System.out.println("\nReserva removida com sucesso.");
 
             return res > 0;
         } catch (SQLException e) {
@@ -117,7 +117,7 @@ public class ReservaRepository implements Repositorio <Integer , Reserva> {
 
             // Executa-se a consulta
             int res = stmt.executeUpdate();
-            System.out.println("editarReserva.res=" + res);
+            System.out.println("\nReserva editada com sucesso.");
 
             return res > 0;
         } catch (SQLException e) {
@@ -206,7 +206,7 @@ public class ReservaRepository implements Repositorio <Integer , Reserva> {
 
             // Executa-se a consulta
             int res = stmt.executeUpdate();
-            System.out.println("removerPessoaPorId.res=" + res);
+//            System.out.println("removerPessoaPorId.res=" + res);
 
             return res > 0;
         } catch (SQLException e) {

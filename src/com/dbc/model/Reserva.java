@@ -52,11 +52,8 @@ public class Reserva {
     @Override
     public String toString() {
         return
-                "Reserva - " + idReserva +
-                ", hoteis=" +  hoteis +
-                ", quartos=" + quartos +
-                ", usuario=" + usuario +
-                ", dataReserva=" + dataReserva +
-                '}';
+                "Reserva ["  + idReserva + "]" +
+                ": " +  hoteis +
+                " - " + quartos ;
     }
 }

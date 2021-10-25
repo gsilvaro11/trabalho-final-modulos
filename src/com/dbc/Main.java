@@ -29,7 +29,7 @@ public class Main {
 
         int opcao = -1;
         while (opcao != 0) {
-            System.out.println("========= MENU RESERVA =========");
+            System.out.println("\n========= MENU RESERVA =========");
             System.out.println("Digite [1] para CRIAR reserva\n" + "Digite [2] para LISTAR reserva\n" + "Digite [3] para EDITAR reserva \n" + "Digite [4] para EXCLUIR reserva\n");
 
             System.out.println("========== MENU HOTEL ==========");
@@ -45,17 +45,17 @@ public class Main {
                     Quartos quartos = new Quartos();
                     Usuario usuario = new Usuario();
                     estadoService.listarEstados();
-                    System.out.println("Digite o índice do estado: ");
+                    System.out.println("\nDigite o índice do estado: ");
                     Integer indexEstado = scanner.nextInt();
                     cidadeService.listarCidadesPorEstado(indexEstado);
-                    System.out.println("Digite o índice da cidade: ");
+                    System.out.println("\nDigite o índice da cidade: ");
                     Integer indexCidade = scanner.nextInt();
                     hoteisService.listarHoteisPorCidade(indexCidade);
 
-                    System.out.println("Digite o índice do Hotel: ");
+                    System.out.println("\nDigite o índice do Hotel: ");
                     Integer indexHotel = scanner.nextInt();
                     quartosService.listarQuartosPorHotel(indexHotel);
-                    System.out.println("Digite o índice do Quarto ");
+                    System.out.println("\nDigite o índice do Quarto ");
                     Integer indexQuarto = scanner.nextInt();
 
                     quartos.setIdQuarto(indexQuarto);
@@ -77,7 +77,7 @@ public class Main {
                 }
                 case 3: { //editar
                     reservaService.listarReserva();
-                    System.out.println("Digite o índice da Reserva: ");
+                    System.out.println("\nDigite o índice da Reserva: ");
                     Integer indiceReserva = scanner.nextInt();
 
                     Reserva reserva = new Reserva();
@@ -85,16 +85,16 @@ public class Main {
                     Quartos quartos = new Quartos();
                     Usuario usuario = new Usuario();
                     estadoService.listarEstados();
-                    System.out.println("Digite o índice do estado: ");
+                    System.out.println("\nDigite o índice do estado: ");
                     Integer indexEstado = scanner.nextInt();
                     cidadeService.listarCidadesPorEstado(indexEstado);
-                    System.out.println("Digite o índice da cidade: ");
+                    System.out.println("\nDigite o índice da cidade: ");
                     Integer indexCidade = scanner.nextInt();
                     hoteisService.listarHoteisPorCidade(indexCidade);
-                    System.out.println("Digite o índice do Hotel: ");
+                    System.out.println("\nDigite o índice do Hotel: ");
                     Integer indexHotel = scanner.nextInt();
                     quartosService.listarQuartosPorHotel(indexHotel);
-                    System.out.println("Digite o índice do Quarto ");
+                    System.out.println("\nDigite o índice do Quarto ");
                     Integer indexQuarto = scanner.nextInt();
                     quartos.setIdQuarto(indexQuarto);
                     hoteis.setIdHotel(indexHotel);
@@ -110,7 +110,7 @@ public class Main {
                 }
                 case 4: { //remover
                     reservaService.listarReserva();
-                    System.out.println("Digite o índice da Reserva: ");
+                    System.out.println("\nDigite o índice da Reserva: ");
                     Integer indexReserva = scanner.nextInt();
                     reservaService.removerReserva(indexReserva);
                     break;
@@ -121,10 +121,10 @@ public class Main {
                     Endereco endereco = new Endereco();
 
 
-                    System.out.println("Digite o nome do hotel: ");
+                    System.out.println("\nDigite o nome do hotel: ");
                     String nomeHotel = scanner.next();
                     enderecoService.listarEndereco();
-                    System.out.println("Digite o indice do endereco: ");
+                    System.out.println("\nDigite o indice do endereco: ");
                     Integer indexEndereco = scanner.nextInt();
                     hoteis.setNome(nomeHotel);
                     endereco.setId_endereco(indexEndereco);
@@ -138,17 +138,17 @@ public class Main {
                 }
                 case 7: { //editarHotel
                     hoteisService.listarHoteis();
-                    System.out.println("Digite o índice do Hotel: ");
+                    System.out.println("\nDigite o índice do Hotel: ");
                     Integer indiceHotel = scanner.nextInt();
 
 
                     Hoteis hoteis = new Hoteis();
                     Endereco endereco = new Endereco();
 
-                    System.out.println("Digite o nome do hotel: ");
+                    System.out.println("\nDigite o nome do hotel: ");
                     String nomeHotel = scanner.next();
                     enderecoService.listarEndereco();
-                    System.out.println("Digite o indice do endereco: ");
+                    System.out.println("\nDigite o indice do endereco: ");
                     Integer indexEndereco = scanner.nextInt();
                     hoteis.setNome(nomeHotel);
                     endereco.setId_endereco(indexEndereco);
@@ -158,7 +158,7 @@ public class Main {
                 }
                 case 8: { //removerHotel
                     hoteisService.listarHoteis();
-                    System.out.println("Digite o índice do Hotel: ");
+                    System.out.println("\nDigite o índice do Hotel: ");
                     Integer indexHotel = scanner.nextInt();
                     reservaService.removerReservaPorHotel(indexHotel);
                     quartosService.removerQuartoPorHotel(indexHotel);
